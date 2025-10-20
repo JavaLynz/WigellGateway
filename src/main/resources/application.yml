@@ -1,0 +1,37 @@
+server:
+  port: 4545
+
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: cadett-splitters-sushi
+              uri: http://cadett-splitters-sushi:9595
+              predicates:
+                - Path=/api/wigellsushi/**
+
+            - id: travel-service
+              uri: http://travel-service:8585
+              predicates:
+              - Path=/api/wigelltravels/**
+
+            - id: cadett-splitters-repairs
+              uri: http://cadett-splitters-repairs:5555
+              predicates:
+                - Path=/api/wigellrepairs/**
+
+            - id: currency-converter
+              uri: http://currency-converter:5556
+              predicates:
+                - Path=/api/currency/**
+
+            - id: cadett-splitters-padel
+              uri: http://cadett-splitters-padel:7575
+              predicates:
+                - Path=/api/wigellpadel/**
+
